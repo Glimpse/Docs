@@ -6,6 +6,14 @@
 Welcome to Glimpse's documentation!
 ===================================
 
+This site is a work in progress. It contains Glimpse v2's documentation.
+
+For Glimpse v1, please see `getglimpse.com/Docs <http://getglimpse.com/Docs/>`_.
+
+To install Glimpse v2, check out our blog at http://blog.getglimpse.com/2015/11/19/installing-glimpse-v2-beta1/
+
+
+
 Contents:
 
 .. toctree::
