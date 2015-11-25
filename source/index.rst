@@ -12,6 +12,8 @@ For Glimpse v1, please see `getglimpse.com/Docs <http://getglimpse.com/Docs/>`_.
 
 To install Glimpse v2, check out our blog at http://blog.getglimpse.com/2015/11/19/installing-glimpse-v2-beta1/
 
+For some information about locking Glimpse 2.0.0-beta1 down, check out `this gist <https://gist.github.com/nikmd23/88a772bef947e05692d9>`_.
+
 
 
 Contents:
