@@ -16,7 +16,7 @@ These properties should appear on all standard data access messages.
 ```json
 {
 	"duration": 321,
-	"connection": 'my connection string/server identifier'
+	"connection": "my connection string/server identifier"
 }
 ```
 
