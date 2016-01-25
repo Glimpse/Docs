@@ -15,8 +15,8 @@ These properties should appear on all standard data access messages.
 
 ```json
 {
-	duration: 321,
-	connection: 'my connection string/server identifier'
+	"duration": 321,
+	"connection": 'my connection string/server identifier'
 }
 ```
 
@@ -138,7 +138,7 @@ Has a:
 			"type": "string",
 			"title": "Database",
 			"description": "The MongoDb database that was operated against."
-		}
+		},
 		"collection": {
 			"id": "http://getglimpse.com/collection",
 			"type": "string",
