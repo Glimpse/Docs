@@ -48,13 +48,87 @@ Fields
 
 ### Insert
 
-> This section is a WIP and should be ignored until further notice.
- 
-Has a:
-- method call (insertOne vs insertMany?)
-- isMajority (bool based on the w parameter)
-- timeout
-- waitForJournalSync (bool)
+**Type Name:** `mongo-insert`
+
+**Schema:**
+```json
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://getglimpse.com/message-schema/mongo-insert.json",
+	"type": "object",
+	"title": "MongoDb Insert Operation",
+	"description": "Schema for insert operations against a MongoDb database.",
+	"properties": {
+		"operation": {
+			"id": "http://getglimpse.com/operation",
+			"type": "string",
+			"title": "Insert Operation",
+			"description": "The driver method that was called to execute an insert.",
+			"enum": ["insert", "insertOne", "insertMany"]
+		},
+		"docs": {
+			"id": "http://getglimpse.com/docs",
+			"type": "array",
+			"title": "Documents to Insert",
+			"description": "The document(s) to insert."
+		},
+		"count": {
+			"id": "http://getglimpse.com/count",
+			"type": "integer",
+			"multipleOf": 1,
+			"minimum": 0,
+			"title": "Record Count",
+			"description": "The number of documents that were inserted in this operation."
+		},
+		"insertedIds": {
+			"id": "http://getglimpse.com/inserted",
+			"type": "array",
+			"title": "Inserted Document Ids",
+			"description": "The Id's of the inserted document(s)."
+		},
+		"duration": {
+			"id": "http://getglimpse.com/duration",
+			"type": "number",
+			"minimum": 0,
+			"title": "Duration",
+			"description": "The amount of time, in milliseconds, that the operation took to execute."
+		},
+		"options": {
+			"id": "http://getglimpse.com/options",
+			"type": ["object", "null"],
+			"title": "Options",
+			"description": "Any additional options that were passed into the operation. May be null."
+		},
+		"connectionPort": {
+			"id": "http://getglimpse.com/connection-port",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 65535,
+			"title": "Connection Port",
+			"description": "The TCP/IP port used to connect to the MongoDb server."
+		},
+		"connectionHost": {
+			"id": "http://getglimpse.com/connection-host",
+			"type": "string",
+			"title": "Connection Host",
+			"description": "The host of the MongoDb server."
+		},
+		"database": {
+			"id": "http://getglimpse.com/database",
+			"type": "string",
+			"title": "Database",
+			"description": "The MongoDb database that was operated against."
+		},
+		"collection": {
+			"id": "http://getglimpse.com/collection",
+			"type": "string",
+			"title": "Collection",
+			"description": "The MongoDb collection that was operated against."
+		}
+	},
+	"required": ["operation", "docs", "insertedIds", "count", "duration", "connectionPort", "connectionHost", "collection"]
+}
+```
 
 ### Update
 
