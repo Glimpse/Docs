@@ -69,6 +69,7 @@ Fields
 		"docs": {
 			"id": "http://getglimpse.com/docs",
 			"type": "array",
+			"minItems": 1,
 			"title": "Documents to Insert",
 			"description": "The document(s) to insert."
 		},
@@ -83,6 +84,7 @@ Fields
 		"insertedIds": {
 			"id": "http://getglimpse.com/inserted",
 			"type": "array",
+			"minItems": 1,
 			"title": "Inserted Document Ids",
 			"description": "The Id's of the inserted document(s)."
 		},
