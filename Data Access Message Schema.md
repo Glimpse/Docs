@@ -143,7 +143,7 @@ _Note: The `options` may need to be cobbled together based on these possible cal
 			"description": "The MongoDb collection that was operated against."
 		}
 	},
-	"required": ["operation", "query", "updates", "matchedCount", "modifiedCount", "upsertedCount", "startTime", "duration", "connectionPort", "connectionHost", "collection"]
+	"required": ["operation", "query", "startTime", "duration", "connectionPort", "connectionHost", "collection"]
 }
 ```
 
