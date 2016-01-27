@@ -88,6 +88,13 @@ Fields
 			"title": "Inserted Document Ids",
 			"description": "The Id's of the inserted document(s)."
 		},
+		"startTime": {
+			"id": "http://getglimpse.com/startTime",
+			"type": "string",
+			"format": "date-time",
+			"title": "Start Time",
+			"description": "The time the operation began in the format specified in RFC3339 Section 5.6."
+		},
 		"duration": {
 			"id": "http://getglimpse.com/duration",
 			"type": "number",
@@ -128,25 +135,116 @@ Fields
 			"description": "The MongoDb collection that was operated against."
 		}
 	},
-	"required": ["operation", "docs", "insertedIds", "count", "duration", "connectionPort", "connectionHost", "collection"]
+	"required": ["operation", "docs", "insertedIds", "count", "startTime", "duration", "connectionPort", "connectionHost", "collection"]
 }
 ```
 
 ### Update
 
-> This section is a WIP and should be ignored until further notice.
+**Type Name:** `mongo-update`
 
-Has a:
-- selector
-- update command
-- method call (updateOne | updateMany | findOneAndUpdate | findOneAndReplace)
-- isMajority (bool based on the w parameter)
-- timeout
-- waitForJournalSync (bool)
-- isMulti (bool update more than one doc at a time)
-- isUpsert (bool is this an upsert)
-
-- sort, projection & returnOriginal for findOneAndUpdate
+**Schema:** 
+```json
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://getglimpse.com/message-schema/mongo-update.json",
+	"type": "object",
+	"title": "MongoDb Update Operation",
+	"description": "Schema for update operations against a MongoDb database.",
+	"properties": {
+		"operation": {
+			"id": "http://getglimpse.com/operation",
+			"type": "string",
+			"title": "Update Operation",
+			"description": "The driver method that was called to execute an update.",
+			"enum": ["updateOne", "updateMany"]
+		},
+		"query": {
+			"id": "http://getglimpse.com/query",
+			"type": "string",
+			"title": "Query",
+			"description": "The query/filter that was used to execute the update."
+		},
+		"updates": {
+			"id": "http://getglimpse.com/updates",
+			"type": "object",
+			"title": "Update Command",
+			"description": "The update command."
+		},
+		"matchedCount": {
+			"id": "http://getglimpse.com/matchedCount",
+			"type": "integer",
+			"multipleOf": 1,
+			"minimum": 0,
+			"title": "Matched Count",
+			"description": "The number of documents that matched the query."
+		},
+		"modifiedCount": {
+			"id": "http://getglimpse.com/modifiedCount",
+			"type": "integer",
+			"multipleOf": 1,
+			"minimum": 0,
+			"title": "Modified Count",
+			"description": "The number of documents that were modified."
+		},
+		"upsertedCount": {
+			"id": "http://getglimpse.com/upsertedCount",
+			"type": "integer",
+			"multipleOf": 1,
+			"minimum": 0,
+			"title": "Upserted Count",
+			"description": "The number of documents that were upserted."
+		},
+		"startTime": {
+			"id": "http://getglimpse.com/startTime",
+			"type": "string",
+			"format": "date-time",
+			"title": "Start Time",
+			"description": "The time the operation began in the format specified in RFC3339 Section 5.6."
+		},
+		"duration": {
+			"id": "http://getglimpse.com/duration",
+			"type": "number",
+			"minimum": 0,
+			"title": "Duration",
+			"description": "The amount of time, in milliseconds, that the operation took to execute."
+		},
+		"options": {
+			"id": "http://getglimpse.com/options",
+			"type": ["object", "null"],
+			"title": "Options",
+			"description": "Any additional options that were passed into the operation. May be null."
+		},
+		"connectionPort": {
+			"id": "http://getglimpse.com/connection-port",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 65535,
+			"title": "Connection Port",
+			"description": "The TCP/IP port used to connect to the MongoDb server."
+		},
+		"connectionHost": {
+			"id": "http://getglimpse.com/connection-host",
+			"type": "string",
+			"title": "Connection Host",
+			"description": "The host of the MongoDb server."
+		},
+		"database": {
+			"id": "http://getglimpse.com/database",
+			"type": "string",
+			"title": "Database",
+			"description": "The MongoDb database that was operated against."
+		},
+		"collection": {
+			"id": "http://getglimpse.com/collection",
+			"type": "string",
+			"title": "Collection",
+			"description": "The MongoDb collection that was operated against."
+		}
+	},
+	"required": ["operation", "query", "updates", "matchedCount", "modifiedCount", "upsertedCount", "startTime", "duration", "connectionPort", "connectionHost", "collection"]
+}
+```
 
 ### Delete
 
@@ -181,6 +279,13 @@ Has a:
 			"minimum": 0,
 			"title": "Record Count",
 			"description": "The number of documents that were deleted in this operation."
+		},
+		"startTime": {
+			"id": "http://getglimpse.com/startTime",
+			"type": "string",
+			"format": "date-time",
+			"title": "Start Time",
+			"description": "The time the operation began in the format specified in RFC3339 Section 5.6."
 		},
 		"duration": {
 			"id": "http://getglimpse.com/duration",
