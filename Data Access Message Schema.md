@@ -38,7 +38,114 @@ MongoDB's driver supports both callback and promises based API's. Both should be
 
 
 ### Read
-> This section is a WIP and should be ignored until further notice.
+Reads tend to be more complex than writes because of cursors.
+
+This annotated time line shows the approach we'll take to measure duration, for now.
+```
+                    + <--+ Connection Opened
+                    |
+                    |
+               +--> | <--+ Command Issued
+               |    |
+ Duration      |    |
+ Measured +--> |    |
+by Glimpse     |    |
+(for now)      |    |
+               +--> | <--+ Cursor Returned
+                    |
+                    | <--+
+                    |    |
+                    |    |
+                    |    | <--+ Interact w/ Cursor
+                    |    |
+                    |    |
+                    | <--+
+                    |
+                    | <--+ Cursor Closed
+                    |
+                    |
+                    + <--+ Connection Closed
+
+```
+
+**Type Name:** `mongo-find`
+
+**Schema:**
+
+_Note: The `options` may need to be cobbled together based on these possible calls on the cursor itself:_
+
+
+```json
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://getglimpse.com/message-schema/mongo-find.json",
+	"type": "object",
+	"title": "MongoDb Find Operation",
+	"description": "Schema for find operations against a MongoDb database.",
+	"properties": {
+		"operation": {
+			"id": "http://getglimpse.com/operation",
+			"type": "string",
+			"title": "Update Operation",
+			"description": "The driver method that was called to execute an update.",
+			"enum": ["find", "findOne", "count"]
+		},
+		"query": {
+			"id": "http://getglimpse.com/query",
+			"type": "string",
+			"title": "Query",
+			"description": "The query/filter that was used to execute the find."
+		},
+		"startTime": {
+			"id": "http://getglimpse.com/startTime",
+			"type": "string",
+			"format": "date-time",
+			"title": "Start Time",
+			"description": "The time the operation began in the format specified in RFC3339 Section 5.6."
+		},
+		"duration": {
+			"id": "http://getglimpse.com/duration",
+			"type": "number",
+			"minimum": 0,
+			"title": "Duration",
+			"description": "The amount of time, in milliseconds, that the operation took to execute."
+		},
+		"options": {
+			"id": "http://getglimpse.com/options",
+			"type": ["object", "null"],
+			"title": "Options",
+			"description": "Any additional options that were passed into the operation. May be null."
+		},
+		"connectionPort": {
+			"id": "http://getglimpse.com/connection-port",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 65535,
+			"title": "Connection Port",
+			"description": "The TCP/IP port used to connect to the MongoDb server."
+		},
+		"connectionHost": {
+			"id": "http://getglimpse.com/connection-host",
+			"type": "string",
+			"title": "Connection Host",
+			"description": "The host of the MongoDb server."
+		},
+		"database": {
+			"id": "http://getglimpse.com/database",
+			"type": "string",
+			"title": "Database",
+			"description": "The MongoDb database that was operated against."
+		},
+		"collection": {
+			"id": "http://getglimpse.com/collection",
+			"type": "string",
+			"title": "Collection",
+			"description": "The MongoDb collection that was operated against."
+		}
+	},
+	"required": ["operation", "query", "updates", "matchedCount", "modifiedCount", "upsertedCount", "startTime", "duration", "connectionPort", "connectionHost", "collection"]
+}
+```
 
 Considerations:
 - Cursor Settings, there's [a lot of them](http://mongodb.github.io/node-mongodb-native/2.0/reference/crud/#read-methods) and they are chainable.
@@ -157,7 +264,7 @@ Fields
 			"type": "string",
 			"title": "Update Operation",
 			"description": "The driver method that was called to execute an update.",
-			"enum": ["updateOne", "updateMany"]
+			"enum": ["updateOne", "updateMany", "replaceOne", "findOneAndUpdate"]
 		},
 		"query": {
 			"id": "http://getglimpse.com/query",
@@ -264,7 +371,7 @@ Fields
 			"type": "string",
 			"title": "Delete Operation",
 			"description": "The driver method that was called to execute a delete.",
-			"enum": ["deleteOne", "deleteMany", "findOneAndDelete"]
+			"enum": ["deleteOne", "deleteMany", "findOneAndDelete", "remove"]
 		},
 		"query": {
 			"id": "http://getglimpse.com/query",
@@ -331,8 +438,42 @@ Fields
 }
 ```
 
-**Open Questions:**
-- Mongo has a "success flag". I'm not sure if we should put a success flag on these messages, or instead have "error" messages.
+### Undocumented Calls
+
+These `collection` methods are not accounted for (yet) in this document.
+
+- aggregate
+- bulkWrite
+- createIndex
+- createIndexes
+- distinct
+- drop
+- dropAllIndexes
+- dropIndex
+- dropIndexes
+- ensureIndex
+- findAndModify
+- findAndRemove
+- findOneAndReplace
+- geoHaystackSearch
+- geoNear
+- group
+- indexes
+- indexExists
+- indexInformation
+- initializeOrderedBulkOp
+- initializeUnorderedBulkOp
+- isCapped
+- listIndexes
+- mapReduce
+- options
+- parallelCollectionScan
+- reIndex
+- rename
+- save
+- stats
+- update
+
 
 ### Connection Open
 
