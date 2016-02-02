@@ -434,7 +434,7 @@ Fields
 			"description": "The MongoDb collection that was operated against."
 		}
 	},
-	"required": ["operation", "query", "count", "duration", "connectionPort", "connectionHost", "collection"]
+	"required": ["operation", "query", "count", "startTime", "duration", "connectionPort", "connectionHost", "database", "collection"]
 }
 ```
 
