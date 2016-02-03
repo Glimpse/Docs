@@ -14,6 +14,10 @@ To install Glimpse v2, check out our blog at http://blog.getglimpse.com/2015/11/
 
 For some information about locking Glimpse 2.0.0-beta1 down, check out `this gist <https://gist.github.com/nikmd23/88a772bef947e05692d9>`_.
 
+.. include:: ..\message\data\mongodb\insert.json
+   :code: json
+   
+Download :download:`insert.json <../message/data/mongodb/insert.json>` directly.
 
 
 Contents:
