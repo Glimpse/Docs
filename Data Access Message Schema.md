@@ -375,7 +375,7 @@ Fields
 		},
 		"query": {
 			"id": "http://getglimpse.com/query",
-			"type": "string",
+			"type": "object",
 			"title": "Query",
 			"description": "The query/filter that was used to execute the delete."
 		},
