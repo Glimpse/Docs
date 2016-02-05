@@ -3,27 +3,25 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Glimpse's documentation!
-===================================
+=====================
+Glimpse Documentation
+=====================
 
-This site is a work in progress. It contains Glimpse v2's documentation.
+.. WARNING:: This site documents Glimpse |release|. It is a work in progress, and still has a long way to go.
 
-For Glimpse v1, please see `getglimpse.com/Docs <http://getglimpse.com/Docs/>`_.
-
-To install Glimpse v2, check out our blog at http://blog.getglimpse.com/2015/11/19/installing-glimpse-v2-beta1/
+   For Glimpse v1 documentation, please visit `getglimpse.com/Docs <http://getglimpse.com/Docs/>`_.
 
 For some information about locking Glimpse 2.0.0-beta1 down, check out `this gist <https://gist.github.com/nikmd23/88a772bef947e05692d9>`_.
 
-.. include:: ..\message\data\mongodb\insert.json
-   :code: json
-   
-Download :download:`insert.json <../message/data/mongodb/insert.json>` directly.
+Download `insert.json <http://schema.getglimpse.com/data/mongodb/insert>`_ directly.
 
 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   
+   installation
+   messages
 
 
 
@@ -33,4 +31,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
