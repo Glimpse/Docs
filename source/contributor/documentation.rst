@@ -1,8 +1,3 @@
-.. Glimpse documentation master file, created by
-   sphinx-quickstart on Fri Nov 20 16:04:45 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ==========================
 Contributing Documentation
 ==========================
@@ -32,4 +27,10 @@ The steps to install are:
 6. Install ``sphinx-autobuild``: ``pip install sphinx-autobuild``
 7. Run ``sphinx-autobuild`` with these two options: ``sphinx-autobuild source build/html``
 8. Browse to http://localhost:8000/
-9. Begin to edit the docs files, when changes are saved, ``sphinx-autobuild`` will automatically rebuild the site and refresh your browser.
+
+Editing Documentation
+=====================
+
+Edit any ``.rst`` file in the `source` directory. When changes are saved, ``sphinx-autobuild`` will automatically rebuild the site and refresh your browser.
+
+For help with reStructuredText itself, use `the reStructuredText Primer in Sphinx's documentation <http://www.sphinx-doc.org/en/stable/>`_. 
