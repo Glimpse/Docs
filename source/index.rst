@@ -19,9 +19,11 @@ Download `insert.json <http://schema.getglimpse.com/data/mongodb/insert>`_ direc
 Contents:
 
 .. toctree::
+   :glob:
    
-   installation
-   messages
+   user/*
+   contributor/*
+   extensionAuthor/*
 
 
 
