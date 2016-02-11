@@ -28,7 +28,7 @@ Insert
 
 **Type:** ``data-mongodb-insert``
 
-**Schema:** 
+**Schema:** (`Link <http://schema.getglimpse.com/data/mongodb/insert>`_)
 
 .. include:: \..\messages\data\mongodb\insert.json
    :code: json
@@ -67,7 +67,7 @@ This annotated time line shows the approach we'll take to measure duration, for 
 
 **Type:** ``data-mongodb-find``
 
-**Schema:**
+**Schema:** (`Link <http://schema.getglimpse.com/data/mongodb/find>`_)
 
 .. include:: \..\messages\data\mongodb\find.json
    :code: json
@@ -79,7 +79,7 @@ Update
 
 **Type:** ``data-mongodb-update``
 
-**Schema:** 
+**Schema:** (`Link <http://schema.getglimpse.com/data/mongodb/update>`_)
 
 .. include:: \..\messages\data\mongodb\update.json
    :code: json
@@ -89,7 +89,7 @@ Delete
 
 **Type:** ``data-mongodb-delete``
 
-**Schema:** 
+**Schema:** (`Link <http://schema.getglimpse.com/data/mongodb/delete>`_)
 
 .. include:: \..\messages\data\mongodb\delete.json
    :code: json
