@@ -34,7 +34,7 @@ Insert
    :code: json
 
 
-Find
+Read
 ----
 
 Reads tend to be more complex than writes because of cursors.
@@ -50,7 +50,7 @@ This annotated time line shows the approach we'll take to measure duration, for 
      Measured +--> |    |
     by Glimpse     |    |
     (for now)      |    |
-                   +--> | <--+ Cursor Returned
+                   +--> | <--+ Cursor Opened
                         |
                         | <--+
                         |    |
@@ -65,11 +65,11 @@ This annotated time line shows the approach we'll take to measure duration, for 
                         |
                         + <--+ Connection Closed
 
-**Type:** ``data-mongodb-find``
+**Type:** ``data-mongodb-read``
 
-**Schema:** (`Link <http://schema.getglimpse.com/data/mongodb/find>`_)
+**Schema:** (`Link <http://schema.getglimpse.com/data/mongodb/read>`_)
 
-.. include:: \..\messages\data\mongodb\find.json
+.. include:: \..\messages\data\mongodb\read.json
    :code: json
 
 .. NOTE:: The ``options`` may need to be cobbled together based on `these possible calls <http://mongodb.github.io/node-mongodb-native/2.0/reference/crud/#read-methods>`_ on the cursor itself.
