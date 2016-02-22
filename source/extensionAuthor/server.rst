@@ -76,8 +76,8 @@ The entire message store can be queried by context ID and/or type:
 =============== ====== ===========
 Query Parameter Type   Description
 =============== ====== ===========
-Context ID      String If specified, only messages related to this context will be returned.
-Type            Array  If specified, only messages matching any of these types will be returned.
+Context ID      string If specified, only messages related to this context will be returned.
+Type            array  If specified, only messages matching any of these types will be returned.
 =============== ====== ===========
 
 Query Requests
