@@ -20,9 +20,17 @@ ReadTheDocs is based on the popular open source project `Sphinx <http://www.sphi
 The steps to install are:
 
 1. Download and Install Python 3.5 (or later) from `the Python Downloads page <https://www.python.org/downloads/>`_.
+
+.. TIP:: To determine the current version of Python installed on your machine, use ``python --version`` 
+
+.. NOTE:: On OS X, the Python 3.x binary is ``python3``.
+
 2. Using ``git``, clone the Glimpse Docs repository locally: ``git clone git@github.com:Glimpse/Docs.git docs``
 3. Change into the ``docs`` directory: ``cd docs``
 4. Using ``pip``, Python's package manager, install Sphinx: ``pip install sphinx``
+
+.. NOTE:: On OS X, the Python 3.x package manager is ``pip3``.
+
 5. Install the ReadTheDocs's Sphinx theme: ``pip install -U sphinx_rtd_theme``
 6. Install ``sphinx-autobuild``: ``pip install sphinx-autobuild``
 7. Run ``sphinx-autobuild`` with these two options: ``sphinx-autobuild source build/html``
