@@ -41,29 +41,59 @@ Reads tend to be more complex than writes because of cursors.
 
 This annotated time line shows the approach we'll take to measure duration, for now. ::
 
-                        + <--+ Connection Opened
-                        |
-                        |
-                   +--> | <--+ Command Issued
-                   |    |
-     Duration      |    |
-     Measured +--> |    |
-    by Glimpse     |    |
-    (for now)      |    |
-                   +--> | <--+ Cursor Opened
-                        |
-                        | <--+
-                        |    |
-                        |    |
-                        |    | <--+ Interact w/ Cursor
-                        |    |
-                        |    |
-                        | <--+
-                        |
-                        | <--+ Cursor Closed
-                        |
-                        |
-                        + <--+ Connection Closed
+                    + <--+ Connection Opened
+                    |
+                    |
+               +--> | <--+ Command Issued
+               |    |
+ Duration NOT  |    |
+ Measured +--> |    |
+ by Glimpse    |    |
+ (for now)     |    |
+               +--> | <--+ Cursor Returned
+                    |
+                    | <--+
+                    |    |
+                    |    |
+                    |    | <--+ Interact w/ Cursor (e.g., set projection, limit, sort-order,...)
+                    |    |
+                    |    |
+                    | <--+
+                    |
+               +--> | <--+ First "data read" operation on cursor 
+               |    |
+  Duration     |    |
+ Measured +--> |    |
+ by Glimpse    |    |
+ (for now)     |    |
+               +--> | <--+ Result returned
+                    |
+                    |
+               +--> | <--+ Subsequent "data read" operations on cursor
+               |    |
+ Duration NOT  |    |
+ Measured +--> |    |
+ by Glimpse    |    |
+ (for now)     |    |
+               +--> | <--+ Result Returned
+                    |
+                    | <--+ Cursor Closed
+                    |
+                    |
+                    + <--+ Connection Closed
+
+
+**Instrumented Collection Operations**
+ - count()
+ - findOne() - In Glimpse for Node.js, messages for findOne() will have an operation field with a value of "next".  This is because the findOne() implementation ultimately calls Cursor's next() method.
+
+**Instrumented Cursor Operations**
+ - toArray() - time measured by Glimpse is the time to return all of the results to the client.
+ - forEach() - time measured by Glimpse is the time to return the first result.  Only the first call to forEach() will have a Glimpse message associated with it.  
+ - next() - Same behavior as forEach().  
+ - each() - Same behavior as forEach().  
+ - nextObject() - Same behavior as forEach().  
+
 
 **Type:** ``data-mongodb-read``
 
