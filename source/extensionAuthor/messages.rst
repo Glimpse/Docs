@@ -20,6 +20,22 @@ This document outlines the standard message formats that Glimpse uses to transpo
 
 .. There's [a very nice schema visualizer](http://jlblcc.github.io/json-schema-viewer/) that would make the docs easy to read, but we have to figure out how to use it first.
 
+Logging
+=======
+
+Write
+------
+**Type:** ``log-write``
+
+**Schema:** (`Link <http://schema.getglimpse.com/log/write>`_)
+
+.. include:: \..\messages\log\write.json
+   :code: json
+
+.. NOTE:: The ``pattern`` property should be a JavaScript compatible `Regular Expression <https://en.wikipedia.org/wiki/Regular_expression>`_ representation of log messages that leverage `string interpolation <https://en.wikipedia.org/wiki/String_interpolation>`_. The purpose of this property is allow Glimpse clients to treat interpolated values specially, `as demonstrated on JSFiddle <https://jsfiddle.net/coc2yofo/12/>`_. 
+
+  Regular Expressions were chosen since they are `nearly universal <https://en.wikipedia.org/wiki/Comparison_of_regular_expression_engines#Language_features>`_ and can represent any interpolation format. (``%s``, ``{0}``, ``{1:d}``, ``{foo}``, ``$(bar)``, etc.)
+
 MongoDB
 =======
 
