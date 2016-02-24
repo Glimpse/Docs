@@ -50,7 +50,7 @@ This annotated time line shows the approach we'll take to measure duration, for 
  Measured +--> |    |
  by Glimpse    |    |
  (for now)     |    |
-               +--> | <--+ Cursor Returned
+               +--> | <--+ Cursor Returned (cursor not yet opened).
                     |
                     | <--+
                     |    |
@@ -60,7 +60,7 @@ This annotated time line shows the approach we'll take to measure duration, for 
                     |    |
                     | <--+
                     |
-               +--> | <--+ First "data read" operation on cursor 
+               +--> | <--+ First "data read" operation on cursor (cursor will be opened).
                |    |
   Duration     |    |
  Measured +--> |    |
