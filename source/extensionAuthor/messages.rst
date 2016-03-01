@@ -176,3 +176,26 @@ The `MongoDB Collection Driver API <http://mongodb.github.io/node-mongodb-native
 - save
 - stats
 - update
+
+Web
+===
+
+Request
+-------
+
+**Type:** ``web-request``
+
+**Schema:** (`Link <http://schema.getglimpse.com/web/request>`_)
+
+.. include:: \..\messages\web\request.json
+   :code: json
+
+Response
+--------
+
+**Type:** ``web-response``
+
+**Schema:** (`Link <http://schema.getglimpse.com/web/response>`_)
+
+.. include:: \..\messages\web\response.json
+   :code: json
